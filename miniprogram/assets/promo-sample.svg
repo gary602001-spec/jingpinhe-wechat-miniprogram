@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="690" height="300" viewBox="0 0 690 300">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff8a22"/>
+      <stop offset="1" stop-color="#ff5a00"/>
+    </linearGradient>
+    <linearGradient id="box" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#ffe7cf"/>
+    </linearGradient>
+  </defs>
+  <rect width="690" height="300" rx="32" fill="url(#bg)"/>
+  <circle cx="596" cy="48" r="88" fill="#ffffff" opacity=".12"/>
+  <circle cx="54" cy="260" r="108" fill="#ffffff" opacity=".1"/>
+  <text x="42" y="70" fill="#fff8f0" font-size="26" font-weight="700">峰一科技</text>
+  <text x="42" y="126" fill="#ffffff" font-size="46" font-weight="900">精品盒小批量打样</text>
+  <text x="42" y="172" fill="#fff5eb" font-size="25">天地盖  书型盒  折叠盒</text>
+  <rect x="42" y="204" width="176" height="48" rx="24" fill="#ffffff"/>
+  <text x="72" y="236" fill="#ff5a00" font-size="26" font-weight="900">立即报价</text>
+  <g transform="translate(410 62)">
+    <path d="M28 72 L126 28 L226 72 L126 118 Z" fill="url(#box)"/>
+    <path d="M28 72 L126 118 L126 206 L28 158 Z" fill="#f6c79a"/>
+    <path d="M226 72 L126 118 L126 206 L226 158 Z" fill="#ffd8b4"/>
+    <path d="M64 54 L126 28 L188 54 L126 82 Z" fill="#ffffff"/>
+    <text x="78" y="151" fill="#d86712" font-size="24" font-weight="900">SAMPLE</text>
+  </g>
+</svg>

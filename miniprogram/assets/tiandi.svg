@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="360" viewBox="0 0 520 360" role="img" aria-label="Rigid lid and base box">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#fffaf0"/>
+      <stop offset="1" stop-color="#e6dccb"/>
+    </linearGradient>
+    <linearGradient id="black" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#11100e"/>
+      <stop offset="1" stop-color="#3a342b"/>
+    </linearGradient>
+    <linearGradient id="ivory" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f5ead8"/>
+      <stop offset="1" stop-color="#b79c71"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="16" stdDeviation="14" flood-color="#171615" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <rect width="520" height="360" rx="28" fill="url(#bg)"/>
+  <ellipse cx="260" cy="294" rx="176" ry="28" fill="#171615" opacity=".11"/>
+  <g filter="url(#shadow)">
+    <path d="M115 181 L349 136 L421 184 L187 236 Z" fill="url(#ivory)" stroke="#4a3a25" stroke-width="3"/>
+    <path d="M187 236 L421 184 L421 258 L187 311 Z" fill="#d3bc95" stroke="#4a3a25" stroke-width="3"/>
+    <path d="M115 181 L187 236 L187 311 L115 249 Z" fill="#aa9169" stroke="#4a3a25" stroke-width="3"/>
+    <path d="M146 128 L380 84 L445 130 L210 181 Z" fill="url(#black)" stroke="#1b1712" stroke-width="3"/>
+    <path d="M210 181 L445 130 L445 173 L210 226 Z" fill="#1b1916" stroke="#1b1712" stroke-width="3"/>
+    <path d="M146 128 L210 181 L210 226 L146 171 Z" fill="#302a22" stroke="#1b1712" stroke-width="3"/>
+    <path d="M158 130 L379 89" stroke="#d6b36b" stroke-width="5" stroke-linecap="round"/>
+    <path d="M209 184 L441 134" stroke="#d6b36b" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>

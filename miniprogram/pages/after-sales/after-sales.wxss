@@ -1,0 +1,93 @@
+.after-page {
+  padding: 24rpx 24rpx 132rpx;
+}
+
+.empty {
+  padding: 42rpx 28rpx;
+  text-align: center;
+}
+
+.clip {
+  font-size: 80rpx;
+}
+
+.empty-title,
+.empty-desc {
+  display: block;
+}
+
+.empty-title {
+  margin-top: 12rpx;
+  color: #2d251f;
+  font-size: 32rpx;
+  font-weight: 900;
+}
+
+.empty-desc {
+  margin: 14rpx 0 28rpx;
+  color: #8b8179;
+  font-size: 23rpx;
+}
+
+.empty button {
+  width: 220rpx;
+  margin: 0 auto;
+}
+
+.sample {
+  margin-top: 24rpx;
+  padding: 24rpx;
+}
+
+.sample-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16rpx;
+}
+
+.sample-head text:first-child {
+  color: #2d251f;
+  font-size: 28rpx;
+  font-weight: 900;
+}
+
+.sample-head text:last-child {
+  color: #ff5a00;
+  font-size: 24rpx;
+  font-weight: 800;
+}
+
+.sample > text {
+  display: block;
+  margin-top: 10rpx;
+  color: #655b54;
+  font-size: 23rpx;
+}
+
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 28rpx;
+}
+
+.step {
+  text-align: center;
+  color: #9b9189;
+  font-size: 20rpx;
+}
+
+.step view {
+  width: 18rpx;
+  height: 18rpx;
+  margin: 0 auto 8rpx;
+  border-radius: 50%;
+  background: #d7cec6;
+}
+
+.step.active {
+  color: #16a05d;
+}
+
+.step.active view {
+  background: #16a05d;
+}

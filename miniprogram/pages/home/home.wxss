@@ -1,0 +1,4 @@
+view {
+  min-height: 100vh;
+  background: #f7f4ef;
+}

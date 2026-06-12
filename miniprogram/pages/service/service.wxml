@@ -1,0 +1,162 @@
+<view class="page service-page">
+  <view class="hero brand-gradient">
+    <text class="hero-title">在线客服</text>
+
+    <view class="welcome-card">
+      <view class="brand-badge">
+        <text class="brand-en">GRAPHFI</text>
+        <text class="brand-cn">峰一科技</text>
+      </view>
+      <view class="welcome-copy">
+        <text class="welcome-title">您好，欢迎咨询</text>
+        <text class="welcome-desc">峰一科技精品盒打样客服团队</text>
+        <text class="welcome-time">工作时间：09:00 - 18:00（周一至周六）</text>
+      </view>
+      <image class="welcome-image" src="/assets/home/hero-products.png" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <view class="service-content">
+    <view class="service-card faq-card">
+      <view class="card-head">
+        <text class="card-title">常见问题</text>
+        <view class="refresh-action" bindtap="shuffleFaqs">
+          <text>换一换</text>
+          <text class="refresh-icon">↻</text>
+        </view>
+      </view>
+
+      <view class="faq-grid">
+        <view
+          wx:for="{{faqs}}"
+          wx:key="id"
+          class="faq-item {{expandedFaqId === item.id ? 'expanded' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="toggleFaq"
+        >
+          <view class="faq-icon">{{item.icon}}</view>
+          <view class="faq-copy">
+            <text class="faq-title">{{item.title}}</text>
+            <text class="faq-desc">{{item.desc}}</text>
+            <text wx:if="{{expandedFaqId === item.id}}" class="faq-answer">{{item.answer}}</text>
+          </view>
+          <text class="faq-arrow">›</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="notice-card">
+      <view class="notice-line"></view>
+      <view>
+        <text class="notice-title">100个以上 / 其他盒型 / 文件报价，需人工确认</text>
+        <text class="notice-desc">提交询价后，客服会根据尺寸、数量、工艺和文件情况给出报价。</text>
+      </view>
+      <button class="notice-button" bindtap="focusChat">立即联系</button>
+    </view>
+
+    <view class="service-card contact-card">
+      <view class="contact-head">
+        <text class="contact-title">联系我们</text>
+        <text class="contact-sub">专业客服团队为您服务</text>
+      </view>
+
+      <view class="contact-grid">
+        <view
+          wx:for="{{contacts}}"
+          wx:key="type"
+          class="contact-item"
+          data-type="{{item.type}}"
+          bindtap="handleContact"
+        >
+          <view class="contact-icon {{item.type}}">{{item.icon}}</view>
+          <text class="contact-name">{{item.title}}</text>
+          <text class="contact-desc">{{item.desc}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="chat-card">
+      <view class="agent-list">
+        <view
+          wx:for="{{agents}}"
+          wx:key="id"
+          class="agent-item {{activeAgentId === item.id ? 'active' : ''}}"
+          data-id="{{item.id}}"
+          bindtap="switchAgent"
+        >
+          <view class="agent-avatar">{{item.avatar}}</view>
+          <view class="agent-info">
+            <view class="agent-row">
+              <text class="agent-name">{{item.name}}</text>
+              <text class="agent-status {{item.status}}">{{item.statusText}}</text>
+            </view>
+            <text class="agent-role">{{item.role}}</text>
+            <text class="agent-message">{{item.lastMessage}}</text>
+          </view>
+          <text class="agent-time">{{item.lastTime}}</text>
+        </view>
+      </view>
+
+      <view class="chat-window">
+        <view class="chat-head">
+          <view>
+            <text class="chat-name">{{activeAgent.name}}</text>
+            <text class="chat-role">{{activeAgent.role}}</text>
+          </view>
+          <view class="online-mark">
+            <text class="online-dot"></text>
+            <text>在线</text>
+          </view>
+        </view>
+
+        <view class="message-list">
+          <view
+            wx:for="{{messages}}"
+            wx:key="id"
+            class="message-row {{item.senderType}}"
+          >
+            <view wx:if="{{item.senderType === 'service'}}" class="message-avatar">{{activeAgent.avatar}}</view>
+            <view class="message-main">
+              <text class="message-bubble">{{item.content}}</text>
+              <view class="message-meta">
+                <text wx:if="{{item.senderType === 'customer'}}">已读</text>
+                <text>{{item.time}}</text>
+              </view>
+            </view>
+          </view>
+          <view class="typing-row">
+            <view class="message-avatar">{{activeAgent.avatar}}</view>
+            <view class="typing-bubble"><text></text><text></text><text></text></view>
+          </view>
+        </view>
+
+        <view class="chat-input-row">
+          <text class="smile-icon">☺</text>
+          <input
+            class="chat-input"
+            value="{{draft}}"
+            placeholder="请输入您要咨询的问题..."
+            placeholder-class="input-placeholder"
+            bindinput="onDraftInput"
+          />
+          <button class="plus-button" bindtap="toggleActions">+</button>
+        </view>
+
+        <view wx:if="{{showActions}}" class="quick-actions">
+          <view wx:for="{{quickActions}}" wx:key="title" class="quick-action" bindtap="handleQuickAction">
+            <text>{{item.icon}}</text>
+            <text>{{item.title}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goHome"><view class="nav-icon icon-home"></view><text>首页</text></view>
+    <view class="nav-item" bindtap="goQuote"><view class="nav-icon icon-quote"></view><text>报价</text></view>
+    <view class="nav-item" bindtap="goOrder"><view class="nav-icon icon-order"></view><text>订单</text></view>
+    <view class="nav-item active"><view class="nav-icon icon-service"></view><text>客服</text></view>
+    <view class="nav-item" bindtap="goMine"><view class="nav-icon icon-mine"></view><text>我的</text></view>
+  </view>
+</view>

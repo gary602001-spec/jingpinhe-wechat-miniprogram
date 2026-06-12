@@ -1,0 +1,228 @@
+<view class="checkout-page">
+  <view class="top-hero">
+    <text class="page-title">提交订单</text>
+  </view>
+
+  <view wx:if="{{stage === 'form'}}" class="checkout-content form-stage">
+    <view class="step-card card">
+      <view class="step-item active"><text class="step-dot">1</text><text>填写信息</text></view>
+      <view class="step-line"></view>
+      <view class="step-item"><text class="step-dot">2</text><text>确认订单</text></view>
+      <view class="step-line"></view>
+      <view class="step-item"><text class="step-dot">3</text><text>在线支付</text></view>
+      <view class="step-line"></view>
+      <view class="step-item"><text class="step-dot">4</text><text>支付成功</text></view>
+    </view>
+
+    <view class="quote-card card">
+      <image class="quote-image" src="{{quote.image}}" mode="aspectFit"></image>
+      <view class="quote-info">
+        <text class="quote-name">{{quote.productName}}</text>
+        <text class="quote-line">{{quote.materialName}}</text>
+        <text class="quote-line">尺寸：{{quote.length}} × {{quote.width}} × {{quote.height}} mm</text>
+        <text class="quote-line">数量：{{quote.qty}} 个</text>
+        <button class="mini-pill" bindtap="editQuote">查看报价详情 〉</button>
+      </view>
+      <view class="quote-price">
+        <text class="price-main">{{quote.totalText}}</text>
+        <text class="price-sub">单价 {{quote.unitText}}</text>
+      </view>
+    </view>
+
+    <view class="section-card card">
+      <text class="section-heading">收货信息</text>
+      <view class="form-row">
+        <text class="line-icon user"></text>
+        <text class="field-label">联系人</text>
+        <input class="field-input" placeholder="请输入联系人姓名" value="{{contactForm.contactName}}" data-key="contactName" bindinput="onInput" />
+      </view>
+      <view class="form-row">
+        <text class="line-icon phone"></text>
+        <text class="field-label">手机号</text>
+        <input class="field-input" placeholder="请输入手机号码" type="number" maxlength="11" value="{{contactForm.phone}}" data-key="phone" bindinput="onInput" />
+      </view>
+      <view class="form-row" bindtap="chooseAddress">
+        <text class="line-icon pin"></text>
+        <text class="field-label">收货地址</text>
+        <text class="field-value {{contactForm.address ? '' : 'placeholder'}}">{{contactForm.address || '请选择收货地址'}}</text>
+        <text class="chevron">›</text>
+      </view>
+      <view class="form-row last">
+        <text class="line-icon edit"></text>
+        <text class="field-label">详细地址</text>
+        <input class="field-input" placeholder="请填写详细地址（如门牌号、楼层等）" value="{{contactForm.detailAddress}}" data-key="detailAddress" bindinput="onInput" />
+      </view>
+    </view>
+
+    <view class="section-card card">
+      <text class="section-heading">订单信息</text>
+      <view class="form-row">
+        <text class="line-icon calendar"></text>
+        <text class="field-label">期望交期</text>
+        <text class="field-value">{{quote.leadTime}}</text>
+        <text class="chevron">›</text>
+      </view>
+      <view class="form-row last">
+        <text class="line-icon message"></text>
+        <text class="field-label">订单备注</text>
+        <input class="field-input" placeholder="选填：如有特殊要求，请备注说明" maxlength="100" value="{{contactForm.remark}}" data-key="remark" bindinput="onInput" />
+        <text class="count">{{remarkCount}}/100</text>
+      </view>
+    </view>
+
+    <view class="section-card card">
+      <text class="section-heading">发票信息</text>
+      <view class="form-row">
+        <text class="line-icon invoice"></text>
+        <text class="field-label">发票类型</text>
+        <view class="segment">
+          <text class="segment-item {{invoiceType === 'normal' ? 'active' : ''}}" data-type="normal" bindtap="selectInvoiceType">增值税普通发票</text>
+          <text class="segment-item {{invoiceType === 'special' ? 'active' : ''}}" data-type="special" bindtap="selectInvoiceType">增值税专用发票</text>
+        </view>
+      </view>
+      <view class="form-row">
+        <text class="line-icon invoice-title"></text>
+        <text class="field-label">发票抬头</text>
+        <input class="field-input" placeholder="请输入发票抬头" value="{{invoiceTitle}}" data-key="invoiceTitle" bindinput="onInvoiceInput" />
+        <text class="chevron">›</text>
+      </view>
+      <view class="form-row last">
+        <text class="line-icon tax"></text>
+        <text class="field-label">纳税人识别号</text>
+        <input class="field-input" placeholder="选填" value="{{taxNo}}" data-key="taxNo" bindinput="onInvoiceInput" />
+        <text class="chevron">›</text>
+      </view>
+    </view>
+
+    <view class="agreement" bindtap="toggleAgree">
+      <text class="agree-dot {{agreed ? 'checked' : ''}}">✓</text>
+      <text>我已阅读并同意</text><text class="link">《服务协议》</text>
+    </view>
+  </view>
+
+  <view wx:else class="checkout-content pay-stage">
+    <view class="pay-steps">
+      <view class="pay-step done"><text>1</text><text>填写信息</text></view>
+      <view class="pay-line"></view>
+      <view class="pay-step active"><text>2</text><text>确认订单</text></view>
+      <view class="pay-line"></view>
+      <view class="pay-step"><text>3</text><text>支付订单</text></view>
+    </view>
+
+    <view class="payment-card card">
+      <view class="card-title-row">
+        <view class="title-with-icon"><text class="round-icon pin-solid"></text><text>收货信息</text></view>
+        <text class="orange-link" bindtap="chooseAddress">＋ 新增地址</text>
+      </view>
+      <view class="selected-box" bindtap="chooseAddress">
+        <text class="select-check">✓</text>
+        <view class="selected-address">
+          <view><text class="receiver">{{address.receiverName || contactForm.contactName || '张先生'}}</text><text>{{address.receiverPhone || '138****8888'}}</text></view>
+          <text>{{address.province || '广东省'}}{{address.city || '深圳市'}}{{address.district || '宝安区'}}{{address.detail || contactForm.detailAddress}}</text>
+        </view>
+        <text class="chevron">›</text>
+      </view>
+    </view>
+
+    <view class="payment-card card">
+      <view class="card-title-row">
+        <view class="title-with-icon"><text class="round-icon box-solid"></text><text>产品信息</text></view>
+        <text class="orange-link" bindtap="goCheckoutForm">修改报价</text>
+      </view>
+      <view class="pay-product">
+        <image src="{{quote.image}}" mode="aspectFit"></image>
+        <view class="pay-product-info">
+          <view class="pay-name-row"><text class="pay-name">{{quote.productName}}</text><text class="quote-tag">自动报价</text></view>
+          <text>尺寸：{{quote.length}} × {{quote.width}} × {{quote.height}} mm</text>
+          <text>数量：{{quote.qty}} 个</text>
+          <text>面纸：{{quote.printType}} / {{quote.materialName}}</text>
+          <text>工艺：{{quote.craftText}}</text>
+        </view>
+        <text class="pay-product-price">{{quote.totalText}}</text>
+      </view>
+    </view>
+
+    <view class="payment-card card">
+      <view class="card-title-row">
+        <view class="title-with-icon"><text class="round-icon invoice-solid"></text><text>发票信息</text></view>
+        <text class="orange-link">不开发票 〉</text>
+      </view>
+      <view class="selected-box">
+        <text class="select-check">✓</text>
+        <view class="selected-address">
+          <text class="receiver">{{invoiceType === 'normal' ? '增值税普通发票' : '增值税专用发票'}}</text>
+          <text>公司名称：{{invoiceTitle || '深圳市峰一科技有限公司'}}</text>
+          <text>纳税人识别号：{{taxNo || '91440300MA5FXXXXXX'}}</text>
+        </view>
+        <text class="chevron">›</text>
+      </view>
+    </view>
+
+    <view class="payment-card card">
+      <view class="title-with-icon card-title-only"><text class="round-icon note-solid"></text><text>备注信息</text></view>
+      <textarea class="remark-box" placeholder="如有特殊要求，请留言给我们（选填）" maxlength="200" value="{{contactForm.remark}}" data-key="remark" bindinput="onInput"></textarea>
+      <text class="remark-count">{{remarkCount}}/200</text>
+    </view>
+
+    <view class="payment-card card">
+      <view class="card-title-row">
+        <view class="title-with-icon"><text class="round-icon fee-solid"></text><text>费用明细</text></view>
+        <text class="orange-link" bindtap="toggleFee">明细{{feeExpanded ? '收起' : '展开'}}⌄</text>
+      </view>
+      <view class="fee-formula">
+        <block wx:for="{{feeItems}}" wx:key="label">
+          <view class="fee-node {{item.strong ? 'strong' : ''}}">
+            <text>{{item.label}}</text>
+            <text>{{item.value}}</text>
+          </view>
+          <text wx:if="{{index < feeItems.length - 2}}" class="symbol">＋</text>
+          <text wx:elif="{{index === feeItems.length - 2}}" class="symbol">＝</text>
+        </block>
+      </view>
+      <view wx:if="{{feeExpanded}}" class="fee-detail">
+        <view><text>商品基础价</text><text>{{feeItems[0].value}}</text></view>
+        <view><text>工艺费用</text><text>{{feeItems[1].value}}</text></view>
+        <view><text>运费</text><text>{{feeItems[2].value}}</text></view>
+        <view><text>优惠金额</text><text>-{{quote.discountText}}</text></view>
+      </view>
+    </view>
+
+    <view wx:if="{{!quote.manual}}" class="payment-card card">
+      <view class="title-with-icon card-title-only"><text class="round-icon pay-solid"></text><text>支付方式</text></view>
+      <view class="pay-method" data-method="wechat" bindtap="selectPayment">
+        <text class="wechat-mark">微</text>
+        <text>微信支付</text>
+        <text class="radio {{paymentMethod === 'wechat' ? 'checked' : ''}}"></text>
+      </view>
+      <view class="pay-method last" data-method="balance" bindtap="selectPayment">
+        <text class="wallet-mark">¥</text>
+        <text>余额支付（可用余额 ¥{{balanceAvailable}}.00）</text>
+        <text class="radio {{paymentMethod === 'balance' ? 'checked' : ''}}"></text>
+      </view>
+    </view>
+
+    <view class="agreement payment-agreement" bindtap="toggleAgree">
+      <text class="agree-dot {{agreed ? 'checked' : ''}}">✓</text>
+      <text>我已阅读并同意</text><text class="link">《服务条款》</text>
+    </view>
+  </view>
+
+  <view class="fixed-bar">
+    <view class="amount-box">
+      <text class="amount-title">{{stage === 'form' ? '应付金额' : '实付款'}}</text>
+      <text class="amount-price">{{quote.manual ? '待确认' : quote.totalText}}</text>
+      <text wx:if="{{stage === 'form'}}" class="amount-note">共 {{quote.qty}} 个，含运费</text>
+      <text wx:else class="amount-note">已优惠 {{quote.discountText}}</text>
+    </view>
+    <button wx:if="{{stage === 'form'}}" class="bar-button" bindtap="confirmOrder">{{quote.manual ? '提交人工确认' : '确认订单'}}</button>
+    <button wx:else class="bar-button" bindtap="payOrder">{{quote.manual ? '提交人工确认' : '下一步，确认订单'}}</button>
+  </view>
+
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goHome"><view class="nav-icon icon-home"></view><text>首页</text></view>
+    <view class="nav-item" bindtap="goQuote"><view class="nav-icon icon-quote"></view><text>报价</text></view>
+    <view class="nav-item active" bindtap="goOrder"><view class="nav-icon icon-order"></view><text>订单</text></view>
+    <view class="nav-item" bindtap="goService"><view class="nav-icon icon-service"></view><text>客服</text></view>
+    <view class="nav-item" bindtap="goMine"><view class="nav-icon icon-mine"></view><text>我的</text></view>
+  </view>
+</view>

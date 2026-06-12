@@ -1,0 +1,94 @@
+<view class="page quote-page">
+  <view class="quote-hero">
+    <text class="quote-title">产品报价</text>
+
+    <view class="search-pill quote-search">
+      <view class="search-icon"></view>
+      <input
+        class="search-input"
+        value="{{keyword}}"
+        placeholder="搜索盒型 / 工艺 / 面纸"
+        placeholder-class="search-placeholder"
+        confirm-type="search"
+        bindinput="onSearch"
+      />
+    </view>
+
+    <view class="rule-strip">
+      <view class="rule-item">
+        <view class="rule-icon rule-auto"></view>
+        <text>1-100个自动报价</text>
+      </view>
+      <view class="rule-divider"></view>
+      <view class="rule-item">
+        <view class="rule-icon rule-manual"></view>
+        <text>100个以上人工确认</text>
+      </view>
+      <view class="rule-divider"></view>
+      <view class="rule-item">
+        <view class="rule-icon rule-paper"></view>
+        <text>仅开放157g双铜纸</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="quote-panel">
+    <view class="side-menu">
+      <view
+        wx:for="{{categories}}"
+        wx:key="id"
+        class="side-item {{item.activeClass}}"
+        data-id="{{item.id}}"
+        bindtap="switchCategory"
+      >
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+
+    <scroll-view class="product-list" scroll-y enhanced show-scrollbar="{{false}}">
+      <view wx:if="{{filteredProducts.length}}" class="product-grid">
+        <view
+          wx:for="{{filteredProducts}}"
+          wx:key="id"
+          class="quote-card"
+          data-id="{{item.id}}"
+          bindtap="openProduct"
+        >
+          <view class="quote-image-wrap">
+            <image class="quote-product-image" src="{{item.image}}" mode="aspectFit"></image>
+          </view>
+          <text class="quote-card-title">{{item.name}}</text>
+          <view class="quote-tag {{item.tagClass}}">{{item.tag}}</view>
+        </view>
+      </view>
+
+      <view wx:else class="empty-state">
+        <text class="empty-title">暂无相关盒型</text>
+        <text class="empty-desc">请联系客服人工确认</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goHome">
+      <view class="nav-icon icon-home"></view>
+      <text>首页</text>
+    </view>
+    <view class="nav-item active">
+      <view class="nav-icon icon-quote"></view>
+      <text>报价</text>
+    </view>
+    <view class="nav-item" bindtap="goOrder">
+      <view class="nav-icon icon-order"></view>
+      <text>订单</text>
+    </view>
+    <view class="nav-item" bindtap="goService">
+      <view class="nav-icon icon-service"></view>
+      <text>客服</text>
+    </view>
+    <view class="nav-item" bindtap="goMine">
+      <view class="nav-icon icon-mine"></view>
+      <text>我的</text>
+    </view>
+  </view>
+</view>

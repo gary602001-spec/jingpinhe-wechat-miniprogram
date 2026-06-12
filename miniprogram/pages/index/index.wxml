@@ -1,0 +1,88 @@
+<view class="page home-page">
+  <view class="home-top">
+    <text class="home-heading">峰一科技精品盒打样</text>
+    <text class="home-subheading">专业包装打样，助力产品更出彩</text>
+  </view>
+
+  <view class="home-content">
+    <swiper
+      class="hero-swiper"
+      autoplay
+      circular
+      interval="3600"
+      duration="500"
+      indicator-dots
+      indicator-color="rgba(255,255,255,0.72)"
+      indicator-active-color="#ff5a00"
+    >
+      <swiper-item wx:for="{{banners}}" wx:key="src">
+        <image class="hero-banner" src="{{item.src}}" mode="aspectFill"></image>
+      </swiper-item>
+    </swiper>
+
+    <view class="feature-grid">
+      <view
+        wx:for="{{features}}"
+        wx:key="title"
+        class="feature-card {{item.theme}}"
+        data-action="{{item.action}}"
+        data-type="{{item.type}}"
+        data-variant="{{item.variant}}"
+        data-title="{{item.title}}"
+        bindtap="openFeature"
+      >
+        <view class="feature-copy">
+          <text class="feature-title">{{item.title}}</text>
+          <text class="feature-desc">{{item.desc}}</text>
+        </view>
+        <image class="feature-image" src="{{item.image}}" mode="aspectFit"></image>
+      </view>
+    </view>
+
+    <view class="recommend-head">
+      <view>
+        <text class="recommend-title">推荐款式</text>
+        <text class="recommend-sub">点击直接报价</text>
+      </view>
+    </view>
+
+    <view class="product-grid">
+      <view
+        wx:for="{{products}}"
+        wx:key="name"
+        class="product-card"
+        data-type="{{item.type}}"
+        data-variant="{{item.variant}}"
+        data-name="{{item.name}}"
+        bindtap="openProduct"
+      >
+        <image class="product-image" src="{{item.image}}" mode="aspectFit"></image>
+        <text class="product-name">{{item.name}}</text>
+        <text class="product-tag">{{item.tag}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="bottom-nav">
+    <view class="nav-item active">
+      <view class="nav-icon icon-home"></view>
+      <text>首页</text>
+    </view>
+    <view class="nav-item" bindtap="goQuote">
+      <view class="nav-icon icon-quote"></view>
+      <text>报价</text>
+    </view>
+    <view class="nav-item" bindtap="goOrder">
+      <view class="nav-icon icon-order"></view>
+      <text>订单</text>
+    </view>
+    <view class="nav-item" bindtap="goService">
+      <view class="nav-icon icon-service"></view>
+      <text>客服</text>
+    </view>
+    <view class="nav-item" bindtap="goMine">
+      <view class="nav-icon icon-mine"></view>
+      <text>我的</text>
+    </view>
+  </view>
+</view>

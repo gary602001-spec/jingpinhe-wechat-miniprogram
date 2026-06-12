@@ -1,0 +1,26 @@
+<view class="page invoice-page">
+  <view class="card form-card">
+    <text class="label">发票类型</text>
+    <input class="form-input" value="{{form.type}}" data-key="type" bindinput="onInput" />
+    <text class="label">发票抬头</text>
+    <input class="form-input" value="{{form.title}}" data-key="title" bindinput="onInput" />
+    <text class="label">税号</text>
+    <input class="form-input" value="{{form.taxNo}}" data-key="taxNo" bindinput="onInput" />
+    <text class="label">接收邮箱</text>
+    <input class="form-input" value="{{form.email}}" data-key="email" bindinput="onInput" />
+    <text class="label">联系电话</text>
+    <input class="form-input" value="{{form.phone}}" data-key="phone" bindinput="onInput" />
+    <text class="label">备注</text>
+    <input class="form-input remark" placeholder="选填，如有特殊要求请备注" data-key="remark" bindinput="onInput" />
+  </view>
+  <button class="orange-button save-button" bindtap="save">保存发票信息</button>
+  <text class="hint">发票将在订单完成后为您开具并发送至邮箱</text>
+
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goHome"><view class="nav-icon icon-home"></view><text>首页</text></view>
+    <view class="nav-item" bindtap="goQuote"><view class="nav-icon icon-quote"></view><text>报价</text></view>
+    <view class="nav-item" bindtap="goOrder"><view class="nav-icon icon-order"></view><text>订单</text></view>
+    <view class="nav-item" bindtap="goService"><view class="nav-icon icon-service"></view><text>客服</text></view>
+    <view class="nav-item active" bindtap="goMine"><view class="nav-icon icon-mine"></view><text>我的</text></view>
+  </view>
+</view>

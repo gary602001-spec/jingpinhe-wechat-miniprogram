@@ -1,0 +1,40 @@
+.invoice-page {
+  padding: 24rpx 24rpx 132rpx;
+}
+
+.form-card {
+  padding: 24rpx;
+}
+
+.label {
+  display: block;
+  margin: 18rpx 0 12rpx;
+  color: #3b332d;
+  font-size: 25rpx;
+  font-weight: 800;
+}
+
+.label:first-child {
+  margin-top: 0;
+}
+
+.form-input {
+  width: 100%;
+}
+
+.remark {
+  height: 120rpx;
+}
+
+.save-button {
+  width: 100%;
+  margin-top: 26rpx;
+}
+
+.hint {
+  display: block;
+  margin-top: 18rpx;
+  color: #8b8179;
+  font-size: 22rpx;
+  text-align: center;
+}

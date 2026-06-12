@@ -1,0 +1,26 @@
+{
+  "entryPagePath": "pages/index/index",
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/quote/quote",
+    "pages/quote-detail/quote-detail",
+    "pages/checkout/checkout",
+    "pages/payment-success/payment-success",
+    "pages/order/order",
+    "pages/service/service",
+    "pages/mine/mine",
+    "pages/balance/balance",
+    "pages/ledger/ledger",
+    "pages/invoice/invoice",
+    "pages/after-sales/after-sales"
+  ],
+  "window": {
+    "navigationBarTitleText": "峰一科技精品盒打样",
+    "navigationBarBackgroundColor": "#ff5a00",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#fffaf6"
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents"
+}

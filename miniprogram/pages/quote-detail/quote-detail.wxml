@@ -1,0 +1,161 @@
+<view class="page detail-page">
+  <view class="detail-hero">
+    <text class="detail-title">报价详情</text>
+
+    <view class="summary-card">
+      <view class="summary-image-wrap">
+        <image class="summary-image" src="{{productImage}}" mode="aspectFit"></image>
+      </view>
+      <view class="summary-divider"></view>
+      <view class="summary-info">
+        <text class="summary-name">{{productName}}</text>
+        <text class="summary-desc">{{summaryText}}</text>
+        <view class="summary-tag">{{categoryLabel}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="variant-tabs">
+    <view
+      wx:for="{{variantTabs}}"
+      wx:key="id"
+      class="variant-tab {{item.activeClass}}"
+      data-id="{{item.id}}"
+      bindtap="switchProduct"
+    >
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
+  <scroll-view class="detail-scroll" scroll-y enhanced show-scrollbar="{{false}}">
+    <view class="detail-content">
+      <view class="form-card">
+        <view class="card-title-row">
+          <text class="card-title">成品尺寸</text>
+          <text class="card-unit">（mm）</text>
+        </view>
+        <view class="size-grid">
+          <view class="size-field">
+            <text>长</text>
+            <input class="detail-input" type="number" value="{{size.length}}" data-key="length" bindinput="onSizeInput" />
+          </view>
+          <view class="size-field">
+            <text>宽</text>
+            <input class="detail-input" type="number" value="{{size.width}}" data-key="width" bindinput="onSizeInput" />
+          </view>
+          <view class="size-field">
+            <text>高</text>
+            <input class="detail-input" type="number" value="{{size.height}}" data-key="height" bindinput="onSizeInput" />
+          </view>
+        </view>
+      </view>
+
+      <view class="form-card qty-card">
+        <view>
+          <view class="card-title-row">
+            <text class="card-title">数量</text>
+            <text class="card-unit">（个）</text>
+          </view>
+          <text class="helper-text">1-100个自动报价，100个以上人工确认</text>
+        </view>
+        <view class="stepper">
+          <view class="step-btn" data-step="-1" bindtap="changeQty">－</view>
+          <input class="qty-input" type="number" value="{{qty}}" bindinput="onQtyInput" />
+          <view class="step-btn plus" data-step="1" bindtap="changeQty">＋</view>
+        </view>
+      </view>
+
+      <view class="form-card">
+        <text class="card-title">材质信息</text>
+        <view class="material-row">
+          <view class="material-icon"></view>
+          <text class="material-main">面纸：157g 双铜纸</text>
+          <text class="material-note">当前仅开放此材料</text>
+        </view>
+      </view>
+
+      <view class="form-card">
+        <view class="card-title-row">
+          <text class="card-title">工艺选择</text>
+          <text class="craft-tip">选择后才计入报价</text>
+        </view>
+        <view class="craft-buttons">
+          <view
+            wx:for="{{crafts}}"
+            wx:key="key"
+            class="craft-btn {{item.activeClass}}"
+            data-key="{{item.key}}"
+            bindtap="toggleCraft"
+          >
+            {{item.name}}
+          </view>
+        </view>
+
+        <view wx:if="{{activeCraftPanels.length}}" class="craft-panel">
+          <view wx:for="{{activeCraftPanels}}" wx:key="key" class="craft-config">
+            <view wx:if="{{item.showFoilOptions}}" class="foil-options">
+              <view
+                wx:for="{{foilOptions}}"
+                wx:key="value"
+                class="foil-option {{item.activeClass}}"
+                data-value="{{item.value}}"
+                bindtap="selectFoil"
+              >
+                {{item.name}}
+              </view>
+            </view>
+
+            <view wx:if="{{item.needsSize}}" class="craft-size-row">
+              <view class="craft-size-field">
+                <text>工艺长（mm）</text>
+                <input class="detail-input" type="number" value="{{item.length}}" data-key="{{item.key}}" data-field="length" bindinput="onCraftSize" />
+              </view>
+              <view class="craft-size-field">
+                <text>工艺宽（mm）</text>
+                <input class="detail-input" type="number" value="{{item.width}}" data-key="{{item.key}}" data-field="width" bindinput="onCraftSize" />
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="result-card">
+        <view class="result-title-area">
+          <text class="result-title">报价结果</text>
+          <view class="result-icon">
+            <view></view>
+          </view>
+        </view>
+        <view class="result-grid">
+          <view class="result-cell">
+            <text>总价</text>
+            <text class="result-value">{{quoteResult.totalText}}</text>
+          </view>
+          <view class="result-cell">
+            <text>单价</text>
+            <text class="result-value">{{quoteResult.unitText}}</text>
+          </view>
+          <view class="result-cell">
+            <text>交期</text>
+            <text class="result-value">{{quoteResult.leadTime}}</text>
+          </view>
+          <view class="result-cell">
+            <text>起订量</text>
+            <text class="result-value">{{quoteResult.minOrder}}</text>
+          </view>
+        </view>
+        <text class="result-note">{{quoteResult.message}}</text>
+      </view>
+
+      <button class="orange-button submit-button" bindtap="submitQuote">{{submitText}}</button>
+    </view>
+  </scroll-view>
+
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goHome"><view class="nav-icon icon-home"></view><text>首页</text></view>
+    <view class="nav-item active" bindtap="goQuote"><view class="nav-icon icon-quote"></view><text>报价</text></view>
+    <view class="nav-item" bindtap="goOrder"><view class="nav-icon icon-order"></view><text>订单</text></view>
+    <view class="nav-item" bindtap="goService"><view class="nav-icon icon-service"></view><text>客服</text></view>
+    <view class="nav-item" bindtap="goMine"><view class="nav-icon icon-mine"></view><text>我的</text></view>
+  </view>
+</view>

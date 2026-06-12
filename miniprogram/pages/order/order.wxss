@@ -1,0 +1,371 @@
+.order-page {
+  height: 100vh;
+  overflow: hidden;
+  background: #fff9f4;
+}
+
+.order-hero {
+  height: 210rpx;
+  padding-top: 82rpx;
+  background: linear-gradient(135deg, #ff4f00 0%, #ff6500 56%, #ff7a1a 100%);
+  text-align: center;
+}
+
+.order-title {
+  color: #ffffff;
+  font-size: 42rpx;
+  font-weight: 900;
+  line-height: 58rpx;
+}
+
+.status-tabs {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: 90rpx;
+  margin: -34rpx 24rpx 0;
+  border-radius: 20rpx 20rpx 0 0;
+  background: #ffffff;
+  box-shadow: 0 8rpx 24rpx rgba(120, 60, 20, 0.07);
+}
+
+.status-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333333;
+  font-size: 25rpx;
+  line-height: 34rpx;
+  white-space: nowrap;
+}
+
+.status-tab.active {
+  color: #ff5a00;
+  font-weight: 900;
+}
+
+.status-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 9rpx;
+  width: 54rpx;
+  height: 5rpx;
+  border-radius: 999rpx;
+  background: #ff5a00;
+  transform: translateX(-50%);
+}
+
+.search-panel {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  height: 88rpx;
+  margin: 22rpx 24rpx 0;
+}
+
+.order-search {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 70rpx;
+  flex: 1;
+  padding: 0 22rpx;
+  border: 1rpx solid #f0e5dc;
+  border-radius: 18rpx;
+  background: #ffffff;
+  box-shadow: 0 8rpx 20rpx rgba(120, 60, 20, 0.04);
+}
+
+.order-search input {
+  flex: 1;
+  min-width: 0;
+  color: #1f1f1f;
+  font-size: 26rpx;
+}
+
+.search-icon {
+  position: relative;
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 16rpx;
+}
+
+.search-icon::before {
+  content: "";
+  position: absolute;
+  left: 1rpx;
+  top: 1rpx;
+  width: 22rpx;
+  height: 22rpx;
+  border: 4rpx solid #9d948d;
+  border-radius: 50%;
+}
+
+.search-icon::after {
+  content: "";
+  position: absolute;
+  left: 25rpx;
+  top: 25rpx;
+  width: 13rpx;
+  height: 4rpx;
+  border-radius: 999rpx;
+  background: #9d948d;
+  transform: rotate(45deg);
+}
+
+.filter-entry {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  height: 70rpx;
+  padding: 0 8rpx;
+  color: #333333;
+  font-size: 26rpx;
+}
+
+.filter-icon {
+  position: relative;
+  width: 34rpx;
+  height: 34rpx;
+}
+
+.filter-icon::before {
+  content: "";
+  position: absolute;
+  left: 4rpx;
+  top: 5rpx;
+  width: 26rpx;
+  height: 18rpx;
+  border: 3rpx solid #666666;
+  border-bottom: 0;
+  clip-path: polygon(0 0, 100% 0, 62% 100%, 38% 100%);
+}
+
+.filter-icon::after {
+  content: "";
+  position: absolute;
+  left: 15rpx;
+  top: 21rpx;
+  width: 5rpx;
+  height: 9rpx;
+  background: #666666;
+}
+
+.order-scroll {
+  height: calc(100vh - 210rpx - 56rpx - 110rpx - 104rpx);
+  margin-top: 8rpx;
+}
+
+.order-list {
+  padding: 0 24rpx 28rpx;
+}
+
+.order-card {
+  margin-bottom: 22rpx;
+  padding: 24rpx;
+  border-radius: 24rpx;
+  background: #ffffff;
+  box-shadow: 0 10rpx 28rpx rgba(120, 60, 20, 0.06);
+}
+
+.order-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14rpx;
+  min-height: 48rpx;
+  padding-bottom: 18rpx;
+  border-bottom: 1rpx solid #f1e7df;
+  color: #6b625c;
+  font-size: 24rpx;
+}
+
+.order-no {
+  min-width: 0;
+  flex: 1;
+  color: #4a423c;
+  font-size: 26rpx;
+}
+
+.head-right {
+  display: flex;
+  align-items: center;
+  gap: 8rpx;
+  flex: 0 0 auto;
+}
+
+.head-arrow {
+  color: #999999;
+  font-size: 34rpx;
+}
+
+.order-body {
+  display: flex;
+  gap: 20rpx;
+  padding: 20rpx 0 14rpx;
+}
+
+.order-product-image {
+  width: 160rpx;
+  height: 160rpx;
+  flex: 0 0 160rpx;
+  border-radius: 18rpx;
+  background: linear-gradient(180deg, #fff6ee 0%, #fffdf9 100%);
+}
+
+.order-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.product-name {
+  display: block;
+  margin-bottom: 8rpx;
+  color: #1f1f1f;
+  font-size: 30rpx;
+  font-weight: 900;
+  line-height: 38rpx;
+}
+
+.info-line {
+  display: block;
+  color: #6a625c;
+  font-size: 23rpx;
+  line-height: 33rpx;
+}
+
+.order-side {
+  display: flex;
+  align-items: flex-end;
+  width: 156rpx;
+  flex: 0 0 156rpx;
+  flex-direction: column;
+  padding-top: 4rpx;
+  text-align: right;
+}
+
+.status-text {
+  font-size: 30rpx;
+  font-weight: 900;
+  line-height: 38rpx;
+}
+
+.status-text.orange { color: #ff5a00; }
+.status-text.green { color: #1aae75; }
+.status-text.gray { color: #777777; }
+
+.assist-text {
+  display: block;
+  margin-top: 26rpx;
+  color: #6b625c;
+  font-size: 22rpx;
+  line-height: 30rpx;
+}
+
+.order-amount {
+  margin-top: auto;
+  color: #ff5a00;
+  font-size: 30rpx;
+  font-weight: 900;
+  line-height: 38rpx;
+}
+
+.item-count {
+  color: #999999;
+  font-size: 22rpx;
+  line-height: 28rpx;
+}
+
+.action-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18rpx;
+  padding-top: 8rpx;
+}
+
+.action-btn {
+  min-width: 118rpx;
+  height: 54rpx;
+  padding: 0 20rpx;
+  border-radius: 18rpx;
+  font-size: 24rpx;
+  font-weight: 700;
+  line-height: 54rpx;
+}
+
+.action-btn.primary {
+  border: 1rpx solid #ffc8ad;
+  background: #fff2e8;
+  color: #ff5a00;
+}
+
+.action-btn.secondary {
+  border: 1rpx solid #d8d0c9;
+  background: #ffffff;
+  color: #333333;
+}
+
+.empty-state {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 150rpx;
+}
+
+.empty-illustration {
+  position: relative;
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 32rpx;
+  background: #f4eee8;
+}
+
+.empty-illustration::before {
+  content: "";
+  position: absolute;
+  left: 40rpx;
+  top: 34rpx;
+  width: 70rpx;
+  height: 86rpx;
+  border: 4rpx solid #cec5bd;
+  border-radius: 8rpx;
+}
+
+.empty-illustration::after {
+  content: "";
+  position: absolute;
+  left: 56rpx;
+  top: 58rpx;
+  width: 40rpx;
+  height: 30rpx;
+  border-top: 4rpx solid #cec5bd;
+  border-bottom: 4rpx solid #cec5bd;
+}
+
+.empty-title {
+  margin-top: 24rpx;
+  color: #1f1f1f;
+  font-size: 30rpx;
+  font-weight: 900;
+}
+
+.empty-desc {
+  margin-top: 10rpx;
+  color: #77716b;
+  font-size: 25rpx;
+}
+
+.empty-button {
+  width: 180rpx;
+  height: 70rpx;
+  margin-top: 28rpx;
+  border-radius: 999rpx;
+  background: linear-gradient(135deg, #ff6a00 0%, #ff3d00 100%);
+  color: #ffffff;
+  font-size: 27rpx;
+  font-weight: 800;
+  line-height: 70rpx;
+}

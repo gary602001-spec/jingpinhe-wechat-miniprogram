@@ -1,0 +1,39 @@
+<view class="page mine-page">
+  <view class="mine-hero">
+    <view class="profile-card">
+      <view class="avatar">
+        <view class="avatar-head"></view>
+        <view class="avatar-body"></view>
+      </view>
+      <view class="profile-info">
+        <text class="user-name">{{user.name}}</text>
+        <text class="company-name">{{user.company}}</text>
+      </view>
+      <view class="user-badge">{{user.level}}</view>
+    </view>
+  </view>
+
+  <view class="stats-card">
+    <view wx:for="{{stats}}" wx:key="label" class="stat-item" data-type="{{item.type}}" bindtap="tapStat">
+      <view class="stat-icon {{item.icon}}"></view>
+      <text class="stat-value">{{item.value}}</text>
+      <text class="stat-label">{{item.label}}</text>
+    </view>
+  </view>
+
+  <view class="menu-card">
+    <view wx:for="{{menus}}" wx:key="label" class="menu-row" data-action="{{item.action}}" bindtap="tapMenu">
+      <view class="menu-icon {{item.icon}}"></view>
+      <text class="menu-label">{{item.label}}</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="bottom-nav">
+    <view class="nav-item" bindtap="goHome"><view class="nav-icon icon-home"></view><text>首页</text></view>
+    <view class="nav-item" bindtap="goQuote"><view class="nav-icon icon-quote"></view><text>报价</text></view>
+    <view class="nav-item" bindtap="goOrder"><view class="nav-icon icon-order"></view><text>订单</text></view>
+    <view class="nav-item" bindtap="goService"><view class="nav-icon icon-service"></view><text>客服</text></view>
+    <view class="nav-item active"><view class="nav-icon icon-mine"></view><text>我的</text></view>
+  </view>
+</view>

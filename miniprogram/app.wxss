@@ -1,0 +1,283 @@
+page {
+  min-height: 100%;
+  background: #f7f4ef;
+  color: #24201c;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+view,
+text,
+button,
+input,
+picker,
+image,
+scroll-view {
+  box-sizing: border-box;
+}
+
+button {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  line-height: 1;
+}
+
+button::after {
+  border: 0;
+}
+
+.page {
+  min-height: 100vh;
+  padding-bottom: 124rpx;
+  background: #f7f4ef;
+}
+
+.brand-gradient {
+  background: linear-gradient(135deg, #ff4f00 0%, #ff7a00 100%);
+}
+
+.card {
+  border-radius: 18rpx;
+  background: #ffffff;
+  box-shadow: 0 12rpx 32rpx rgba(127, 70, 24, 0.08);
+}
+
+.search-pill {
+  display: flex;
+  align-items: center;
+  height: 76rpx;
+  padding: 0 28rpx;
+  border: 2rpx solid rgba(255, 106, 0, 0.18);
+  border-radius: 40rpx;
+  background: rgba(255, 255, 255, 0.96);
+  color: #9d948d;
+  font-size: 26rpx;
+  box-shadow: 0 10rpx 28rpx rgba(122, 70, 26, 0.08);
+}
+
+.search-icon {
+  position: relative;
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+}
+
+.search-icon::before {
+  content: "";
+  position: absolute;
+  left: 2rpx;
+  top: 2rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border: 4rpx solid #9d948d;
+  border-radius: 50%;
+}
+
+.search-icon::after {
+  content: "";
+  position: absolute;
+  left: 24rpx;
+  top: 24rpx;
+  width: 12rpx;
+  height: 4rpx;
+  border-radius: 4rpx;
+  background: #9d948d;
+  transform: rotate(45deg);
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  color: #2b211c;
+  font-size: 34rpx;
+  font-weight: 800;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  width: 22rpx;
+  height: 34rpx;
+  border-left: 5rpx solid #ff6a00;
+  border-radius: 50%;
+}
+
+.section-title::after {
+  border-left: 0;
+  border-right: 5rpx solid #ff6a00;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  height: 104rpx;
+  padding-top: 6rpx;
+  border-top: 1rpx solid #e9e9e9;
+  background: #ffffff;
+  box-shadow: 0 -2rpx 10rpx rgba(30, 24, 18, 0.04);
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rpx;
+  color: #777777;
+  font-size: 21rpx;
+  line-height: 26rpx;
+}
+
+.nav-item.active {
+  color: #ff5a00;
+  font-weight: 500;
+}
+
+.nav-icon {
+  position: relative;
+  width: 42rpx;
+  height: 42rpx;
+  color: inherit;
+}
+
+.nav-icon::before,
+.nav-icon::after {
+  content: "";
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.icon-home::before {
+  left: 11rpx;
+  top: 18rpx;
+  width: 20rpx;
+  height: 18rpx;
+  border: 3rpx solid currentColor;
+  border-top: 0;
+  border-radius: 0 0 5rpx 5rpx;
+}
+
+.icon-home::after {
+  left: 10rpx;
+  top: 8rpx;
+  width: 20rpx;
+  height: 20rpx;
+  border-left: 3rpx solid currentColor;
+  border-top: 3rpx solid currentColor;
+  transform: rotate(45deg);
+}
+
+.nav-item.active .icon-home::before {
+  background: currentColor;
+}
+
+.icon-quote::before {
+  left: 10rpx;
+  top: 7rpx;
+  width: 24rpx;
+  height: 29rpx;
+  border: 3rpx solid currentColor;
+  border-radius: 5rpx;
+}
+
+.icon-quote::after {
+  content: "\00A5";
+  left: 13rpx;
+  top: 7rpx;
+  width: 18rpx;
+  height: 28rpx;
+  color: currentColor;
+  font-size: 23rpx;
+  font-weight: 400;
+  line-height: 29rpx;
+  text-align: center;
+}
+
+.icon-order::before {
+  left: 10rpx;
+  top: 8rpx;
+  width: 24rpx;
+  height: 29rpx;
+  border: 3rpx solid currentColor;
+  border-radius: 5rpx;
+}
+
+.icon-order::after {
+  left: 16rpx;
+  top: 14rpx;
+  width: 12rpx;
+  height: 14rpx;
+  border-top: 3rpx solid currentColor;
+  border-bottom: 3rpx solid currentColor;
+}
+
+.icon-service::before {
+  left: 7rpx;
+  top: 8rpx;
+  width: 28rpx;
+  height: 25rpx;
+  border: 3rpx solid currentColor;
+  border-radius: 50%;
+}
+
+.icon-service::after {
+  left: 25rpx;
+  top: 27rpx;
+  width: 9rpx;
+  height: 9rpx;
+  border-right: 3rpx solid currentColor;
+  border-bottom: 3rpx solid currentColor;
+  transform: rotate(28deg);
+}
+
+.icon-mine::before {
+  left: 14rpx;
+  top: 7rpx;
+  width: 14rpx;
+  height: 14rpx;
+  border: 3rpx solid currentColor;
+  border-radius: 50%;
+}
+
+.icon-mine::after {
+  left: 7rpx;
+  top: 25rpx;
+  width: 28rpx;
+  height: 13rpx;
+  border: 3rpx solid currentColor;
+  border-radius: 16rpx 16rpx 5rpx 5rpx;
+}
+
+.form-input {
+  height: 72rpx;
+  padding: 0 22rpx;
+  border: 2rpx solid #eee3da;
+  border-radius: 10rpx;
+  background: #ffffff;
+  color: #2b211c;
+  font-size: 26rpx;
+}
+
+.orange-button {
+  height: 80rpx;
+  border-radius: 10rpx;
+  background: linear-gradient(135deg, #ff4f00 0%, #ff7a00 100%);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 800;
+}
+
+.wechat-button {
+  height: 80rpx;
+  border-radius: 10rpx;
+  background: linear-gradient(135deg, #05b856 0%, #10c86a 100%);
+  color: #ffffff;
+  font-size: 28rpx;
+  font-weight: 800;
+}
